@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+    \begin{axis}[
+    	xmin = -0.9,
+    	xmax = 0.9,
+    	ymin = -0.09,
+    	ymax = 0.09,
+        axis lines=middle,
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		every axis y label/.style={at={(current axis.north)},anchor=south},
+        xlabel={$U$ (Voltage)},
+        ylabel={$I$ (Current)},
+        samples=200,
+        xticklabel=\empty,
+        yticklabel=\empty,
+    ]
+
+    % Forward conduction (exponential growth after threshold voltage)
+		\addplot[red, thick, samples=100, domain=-0.5:0.8, restrict y to domain=0:0.8] {1e-15*exp(40*x)};
+   		\draw[red] (0.5,0) node[below]{forward active};
+		\addplot[blue, thick, samples=100, domain=-1:-0.5, restrict y to domain=-1:1]  {-1e-15*exp(-40*x)};
+		\draw[blue] (-0.5,0) node[above]{breakdown};
+
+ 
+    \end{axis}
+\end{tikzpicture}

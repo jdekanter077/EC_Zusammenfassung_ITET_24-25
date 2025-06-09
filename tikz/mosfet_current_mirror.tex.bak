@@ -1,0 +1,14 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (one) at (0,0);
+    \draw (one) ++(0,3) to [american current source, l = $I_{REF}$] ++(0,-1 - \globalscale);
+    \draw (one) ++(0,\globalscale) node[nmos, xscale = -1]{};
+    \draw (one) ++(0,\globalscale) node[left] {$M_r$};
+    \draw (one) node[ground]{};
+    \draw (one) ++(4,3) to [short, i = $I_{copy}$] ++(0, -1-\globalscale);
+    \draw (one) ++(4,\globalscale) node[nmos]{$M_c$};
+    \draw (one) ++(4,0) node[ground]{};
+    \draw (one) ++(0,2*\globalscale) to [short, *-] ++(1,0) to [short, -*] ++(0,-\globalscale); 
+    \draw (one) ++(1,\globalscale) to [short] ++(2,0);
+    \draw(one) ++(1, \globalscale) to [open, v^ = $V_r$] (one);
+    \draw (one) ++(3, \globalscale) to [open, v = $V_c$] ++(1, -\globalscale);    
+\end{circuitikz}

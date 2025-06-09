@@ -1,0 +1,16 @@
+    \begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+	%Voltage source
+	\draw (0,2) to [vsourcesin, l_ = $V_{in}$] ++(0,-2) node[tlground]{};
+	\draw (2 ,2) node[npn](Q1){$Q_1$};
+	\draw (0,2) to[short] (Q1.B);
+    \draw (4,0) node[npn](Q2){$Q_2$};
+    \draw (Q2.C) to[short, *-o] ++(1,0) node[right]{$V_{out}$};
+    \draw (Q1.E) to[short] (2,0) to[short] (Q2.B);
+    \draw (Q2.E) node[tlground]{};
+    \draw (Q2.C) to[R, l = $\SI{500}{\ohm}$] ++(0,2) coordinate(top);
+    \draw (top) to[short, *-] ++(-2,0) to [short] (Q1.C);
+    \draw (top) to [short] ++(2,0) to[battery1] ++(0,-1) node[tlground]{} ++(0.5,0.5) node[right]{$V_{cc} = 2.5V$};
+    \draw[blue] (Q2.B) ++(-0.5,0) to[open, v^ = $ $] (Q2.C);
+    \draw[blue] (Q2.C) ++(0, 0.2) node[left] {max $0.2 V$};
+    \end{circuitikz}

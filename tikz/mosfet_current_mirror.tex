@@ -1,0 +1,11 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (one) at (0,0);
+    \draw (one) ++(0,1) node[nmos, xscale = -1](M1){} node[left] {M1}; 
+    \draw (one) ++(0,3) [american current source, l = $I_{REF}$] to (M1.D);   
+    \draw (M1.S) to[short] ++(0,-0.2) node[ground]{};
+    \draw (M1.G) to[short, *-] (M1.G |- M1.D) to[short, -*] (M1.D);
+    \draw (3,1) node[nmos](M2){M2};
+    \draw (M1.G) to[short] (M2.G); 
+    \draw (M2.D) ++(0,1) to[short, i = $I_{REF}$] (M2.D);
+    \draw (M2.S) to[short] ++(0,-0.2) node[ground]{};
+\end{circuitikz}

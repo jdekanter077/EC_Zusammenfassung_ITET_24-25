@@ -1,0 +1,9 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+    \draw (zero) node[op amp, noinv input up, anchor =-]{};
+    \draw (zero) node[ground]{};
+    \draw (zero) ++(1,1) to [short] ++(0,0.5) node[vcc]{$V_{cc}$};
+    \draw (zero) ++(1,0) to [short] ++(0,-0.5) node[vee]{$V_{ee}$};
+    \draw (zero) ++(0,1) to [short, o-o] ++(0,0) node[left]{$V_{in}$};
+    \draw (zero) ++(2.5,0.5) to [short, o-o] ++(0,0) node[right] {$V_{out}$};
+\end{circuitikz}

@@ -1,0 +1,40 @@
+\begin{circuitikz}[european, scale = \localscale, transform shape]
+    \coordinate (zero) at (0,0);
+    \draw (zero) node[ground]{};
+    \draw (zero) to [R, l = $R_S$] ++(0,2);
+    \draw (zero) +(0,2+\localscale) node[nmos]{$M$};
+    \draw (zero) ++(0,2+\localscale*2) to [R, l = $R_D$] (0,5);
+    \draw (zero) ++(0,5) node[vcc]{$V_{DD}$};
+    \draw (zero) ++(-1.5, 2+\localscale) to [short, o-] ++(0.5,0);
+    \draw (zero) ++(0,2+\localscale*2) to[short, *-o] ++(1,0);
+    \draw (zero) ++(-1.5, 2+\localscale) node[left]{$V_{in}$};
+    \draw (zero) ++(1,2+\localscale*2) node[right]{$V_{out}$};
+    \draw (zero) ++(0,2) to [short, *-o] ++(1,0) node[right]{$V_{R_S}$};
+
+    \coordinate (zzero) at (4.5,0);
+    \draw (zzero) ++(0,0) node[ground]{};
+    \draw (zzero) ++(0,0) to [R, l = $R_S$] ++(0,2);
+    \draw (zzero) ++(0,4) to [current source, i = $I$, l = $g_m \cdot V_{GS}$] ++(0,-2);
+    \draw (zzero) ++(2.5,2) to [R, l_ = $r_o$] ++(0,2);
+    \draw (zzero) ++(0,4) to [short, -*] ++(2.5,0) to [short, *-*] ++(1.5,0) to [short, *-o] ++(1,0);
+    \draw (zzero) ++(4,2) to[R, l_ = $R_D$] ++(0,2);
+    \draw (zzero) ++(-1,2) node[left]{$V_{R_S}$};
+    \draw (zzero) ++(-1,2) to [short, o-*] ++(1,0);
+    \draw (zzero) ++(0,2) to [short, *-] ++(2.5,0);
+    \draw (zzero) ++(4,2) node[ground]{};
+    \draw (zzero) ++(-1,4) to [short, o-o] ++(0,0);
+    \draw (zzero) ++(-1,4) to [open, style={color=blue}, v = $V_{GS}$] ++(0,-2);
+    \draw (zzero) ++(-1,4) node[left]{$V_{in}$};
+    \draw (zzero) ++(5,4) node[right]{$V_{out}$};
+
+    \coordinate (thev) at (12,0);
+    \draw (thev) node[ground]{};
+    \draw (thev) ++(0,2) to [R, l_ = $R_S$, straight voltages, v^ = $V_{R_S}$] ++(0,-2);
+    \draw (thev) ++(0,2) to [short, *-o] ++(1,0) node[right]{$V_{R_S}$};
+    \draw (thev) ++(0,2) to [R, l = $r_o$] ++(0,2);
+    \draw (thev) ++(0,4) to [voltage source, straight voltages, i = $I$, v = $r_o g_m V_{GS}$] ++(0,2);
+    \draw (thev) ++(0,6) to [short, *-o] ++(1,0);
+    \draw (thev) ++(1,6) node[right]{$V_{out}$};
+    \draw (thev)++(0,6) to [R, l = $R_D$, straight voltages, v = $V_{R_D}$] ++(0,2);
+    \draw (thev) ++(0,8) node[ground, rotate = 180]{};
+\end{circuitikz}

@@ -1,0 +1,8 @@
+
+    \begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \draw (0,2) to [vsourcesin, l_ = $V_{in}$] ++(0,-4) node[tlground]{};
+    \draw (0,2) to [short] ++(2,0) to [R, l = $r_{\pi_1}$] ++(0,-2) to [short] ++(1,0) coordinate(mid) to [short, *-] ++(1,0);
+    \draw (4,2) node[tlground, rotate = 180]{} to [american current source, l = $g_{m_1}\cdot V_{r_{\pi_1}}$] ++(0, -2);
+    \draw (mid) to [R, l = $r_{\pi_2}$] ++(0,-2) to [short] ++(2,0) node[ground]{} to [short, *-] ++(2,0);
+    \draw (7,2) node[tlground, rotate = 180]{} to[R, l = $R_C$] ++(0,-2) to[short, *-o] ++(1,0) node[right]{$V_{out}$} ++(-1,0) to [american current source, l = $g_{m_2}\cdot V_{r_{\pi_2}}$] ++(0, -2);
+    \end{circuitikz}

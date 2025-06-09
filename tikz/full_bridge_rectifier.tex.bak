@@ -1,0 +1,13 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \draw (-2,1) to [vsourcesin, l = $V_\text{in}$] (-2,3);
+    \draw (-2,1) to[short, -*] (0,1);
+    \draw (-2,3) to [short, -*] (0,3);
+    \draw (-1,2) to [short, *-] (-1,0) to [short](0,0);
+    \draw (1,2) to [short, *-] (2,2);
+    \draw (0,1) to [D*] (1,2) to [D*, invert] (0,3) to [D*, invert] (-1,2) to [D*] (0,1);
+    \draw (2,2) to [short, *-*] (4,2) to [short, *-o] (6,2);
+    \draw (2,2) to [C, l = $C$] (2, 0);
+    \draw (4,2) to [R, l = $R_L$] (4,0);
+    \draw (0,0) to [short, -*] (2,0) to [short, *-*] (4,0) to [short, *-o] (6,0); 
+    \draw (6,2) to [open, v = $V_\text{out}$, voltage=american] (6,0);
+\end{circuitikz}

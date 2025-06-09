@@ -1,0 +1,8 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+    \draw (zero) node[op amp, noinv input up, anchor =-](AMP){};
+    \draw (AMP.+) to [short, o-o] ++(0,0) node[left]{$V_{in}$};
+    \draw (AMP.out) to [R, l = $R_1$, name=R1] ++(0,-2) coordinate(pos) to [R, l = $R_2$, name=R2] ++(0,-2) node[ground]{};
+    \draw (AMP.-) to [short] (AMP.- |- pos)to [short, -*] (pos) node[right]{$V_{-}$};
+    \draw (AMP.out) to [short, o-o] ++(0,0) node[right] {$V_{out}$};
+\end{circuitikz}

@@ -1,0 +1,8 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \draw (0,0) node[left]{$+$};
+    \draw (0,0) to [D*, l = $D$, v = $V_D$, f = $I_D$, straight voltages,] ++ (3,0);
+    \draw (3,0) node[right]{$-$};
+    \draw (5,0) node[left]{$+$};
+    \draw (5,0) to [R, l = $R$, f = $I_D$, a=\SI{0} {\ohm}] ++(3,0) to [battery1, v = $V_D$] ++(2,0);
+    \draw (10,0) node[right]{$-$};
+\end{circuitikz}

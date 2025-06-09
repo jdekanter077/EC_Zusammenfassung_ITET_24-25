@@ -1,0 +1,9 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+    \draw (zero) [american current source, i = $1 \si{mA}$, l_ = $I$] to ++(0,2);
+    \draw (zero) ++(2,0) [R, l =$R$] to ++(0,2);
+ 	\draw (zero) ++(3,0) [D*, l_ =$D_1$, invert] to ++(0,1);
+ 	\draw (zero) ++(3,1) [D*, l_ =$D_2$, invert] to ++(0,1);
+ 	\draw (zero) ++(0,2) [short, -*] to ++(2,0) [short, *-] to ++(1,0);
+ 	\draw (zero) [short, -*] to ++(2,0) [short, *-] to ++(1,0);
+\end{circuitikz}

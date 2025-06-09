@@ -1,0 +1,12 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \draw (0,0) node[nmos, rotate = 90, xscale=-1]{};
+    \draw (-1,0) node[left]{Drain};
+    \draw (0, 1) node[above]{Gate};
+    \draw (1, 0) node[right]{Source};
+
+    \draw (5,0) to [R, o-*, v = $V_{DX}$, straight voltages] ++(2,0) to [R, *-o, v = $V_{XS}$, straight voltages] ++(2,0);
+    \draw (7,0) ++ (0,2)to [C, o-* ,l = $C_{ox} \cdot A$, v = $V_{GX}$, straight voltages] ++(0,-2);
+    \draw (5,0) node[left] {Drain};
+    \draw (9,0) node[right] {Source};
+    \draw (7,2) node[above] {Gate};
+\end{circuitikz}

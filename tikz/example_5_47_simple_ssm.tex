@@ -1,0 +1,16 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (top) at (0,2);
+    \coordinate (mid) at (0,0);
+    \coordinate (mid2) at (0,-0.5);
+    \coordinate (bot) at (1, -2.5);
+    \coordinate (low) at (1, -4.5);
+    \draw (top) node[ground, yscale= -1]{};
+    \coordinate (mid) at (0,0);
+    \draw (top) to[R = ${R_3 = r_{\pi 3} \parallelEE \frac{1}{g_{m3}}}$] (mid);
+    \draw (mid) to[short] ++ (-1,0) to[R = $r_{\pi 1}$, v = $V_{r_{\pi 1}}$] ++(0,-2) to[short, -o] ++(-0.5,0) node[left] {$V_{in}$};
+    \draw (mid) to[short, *-] ++(1,0) to [american current source, l = $g_{m1} \cdot V_{r \pi 1}$] (bot);
+    \draw (bot) to[short, *-o] ++(0.5,0) node[right] {$V_{out}$}; 
+    \draw (bot) to[R = $R_C$] (low);
+    \draw (low) to[R = ${R_2 = r_{\pi 2} \parallelEE \frac{1}{g_{m2}}}$] ++(0,-2) node[ground]{};
+
+\end{circuitikz}

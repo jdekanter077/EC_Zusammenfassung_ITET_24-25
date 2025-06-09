@@ -1,0 +1,17 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+    \draw (zero) ++(-1,0) node[left]{$V_{in}$};
+    \draw (zero) ++ (-1,0) [short, o-*] to ++(1,0);
+    \draw (zero) ++(0,1) [D*, l = Ideal] to ++(1,0);
+    \draw (zero) ++(1,1) [battery1, v = $V_{D_1}$] to ++(1,0);
+    \draw (zero) ++(0,-1) [D*, l = Ideal, invert] to ++(1,0);
+    \draw (zero) ++(2,-1) [battery1, v_ = $V_{D_2}$] to ++(-1,0);
+    \draw (zero) ++(0,1) [short] to ++(0,-2);
+    \draw (zero) ++(2,1) [R, l = $R_1$] to ++(2,0);
+    \draw (zero) ++(2,-1) [battery1, v = $V_B$] to ++(2,0);
+    \draw (zero) ++(4,-1) [short] to ++(0,2);
+    \draw (zero) ++(4,0) [short, *-*] to ++(1,0) [short, *-o] to ++(1,0);
+    \draw (zero) ++(6,0) node[right]{$V_{out}$};
+    \draw (zero) ++(5,0) [R, l = $R_2$] to ++(0,-2);
+    \draw (zero) ++ (5,-2) node[tlground]{};
+\end{circuitikz}

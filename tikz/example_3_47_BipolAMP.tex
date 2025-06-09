@@ -1,0 +1,13 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \draw (0,2) node[pnp](Q3){Q3};
+    \draw (Q3.E) node[above, vcc]{$V_{cc}$};
+    \draw (Q3.B) to[short] (Q3.B |- Q3.C) to[short, -*] (Q3.C);
+    \draw (0,0) node[pnp](Q1){Q1};
+    \draw (Q1.E) to [short] (Q3.C);
+    \draw (Q1.B) to [short, -o] ++(-0.5,0) node[left]{$V_{in}$};
+    \draw (Q1.C) to [short, *-o] ++(1,0) node[right]{$V_{out}$};
+    \draw (0, -3.5) node[npn](Q2){Q2};
+    \draw (Q1.C) to [R = $R_C$] (Q2.C);
+    \draw (Q2.E) node[ground]{};
+    \draw (Q2.B) to[short] (Q2.B |- Q2.C) to[short, -*] (Q2.C); 
+\end{circuitikz}

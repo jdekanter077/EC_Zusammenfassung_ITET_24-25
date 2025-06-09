@@ -1,0 +1,36 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+
+    \iffalse %comment out this block
+    \draw [draw=red, line width= 0.2 mm] (-0.65,-0.15) rectangle (2.5,2.15);
+    \draw [draw=red, line width= 0.2 mm] (4,-0.15) rectangle (6,3.75);
+    \fi
+    
+    \coordinate (min) at (-3,-2);
+    \draw (min) ++(0,2 + \globalscale) node[nmos](M1){$M$};
+    \draw (min) ++(-1, 2 + \globalscale) to [short] ++(0,-2 - \globalscale);
+    \draw (min) ++(-1, 0) node[ground]{};
+    \draw (min) ++(0, 3 + \globalscale ) to [short , o-] ++(0,-\globalscale);
+    \draw (min) ++ (0, 3 + \globalscale) node[above]{$R_{tot}$};
+    \draw (min) to [R, l = $R_S$] (M1.S);
+    \draw (min) node[ground]{};
+    \draw (min)++(-1,-0.5) to [open, style={color=blue}, v^ = $V_{GS}$] ++(1, 3);
+
+    
+    \coordinate (zero) at (0,0);
+    \coordinate (new) at (5,0);
+    \draw (zero) ++(1,-2) node[ground]{};
+    \draw (zero) to [short] ++(2,0);
+    \draw (zero)++(0,2) to [current source, l_ = $-V_{R_S} \cdot g_m $, I =$I$] ++(0,-2);
+    \draw (zero) ++(2,0) to [R, l = $R_{o}$] ++(0,2);
+    \draw (zero) ++(0,2) to [short] ++(2,0);
+    \draw (zero) ++(1,0) to [R, *-, l = $R_S$, v = $V_{R_S}$, straight voltages] ++(0,-2);
+    \draw (zero) ++(1,2) to [short, *-o] ++(0,0.5);
+    \draw (zero) ++(1,2.5) node[above]{$R_{tot}$};
+
+    \draw (new) ++(0,-2) node[ground]{};
+    \draw (new) to [R, l = $R_{o}$] ++(0,2);
+    \draw (new) ++(0,2) to [voltage source, V = $-V_{R_S}\cdot  R_{o} g_m$, straight voltages] ++(0, 2);
+    \draw (new) ++(0,0) to [R, l = $R_S$, v = $V_{R_S}$, straight voltages] ++(0,-2);
+    \draw (new) ++(0,4) to [short, -o] ++(0,0);
+    \draw (new) ++(0,4) node[above]{$R_{tot}$};
+\end{circuitikz}

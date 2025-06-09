@@ -1,0 +1,842 @@
+\documentclass[11ypt]{extarticle}
+\usepackage[a4paper, %landscape, 
+            bindingoffset = 0.2in,
+            left = 1 in,
+            right = 1 in,
+            top = 1 cm,    
+            bottom = 1cm,
+            footskip = 0.25in]{geometry} %for 
+\usepackage{amsmath}	
+\usepackage{amssymb} %Greek symbols
+\usepackage{enumerate} %list a,b,c ect
+\usepackage{mathtools}  
+\mathtoolsset{showonlyrefs}	
+\usepackage{pgfplots}
+\pgfplotsset{compat = 1.18}
+
+\usepackage{circuitikz} %EE Schematics
+\ctikzset{tripoles/mos style/arrows} % enable MOSFET Arrows
+\ctikzset{diodes/scale=0.8} %looks better
+\usepackage{siunitx} %SI units in circuits
+
+\usetikzlibrary{external} %better tikz performance and cleaner code
+\tikzexternalize[optimize command away=\includepdf] %activate external files
+%use this command to exclude a file from externalising (for normal plots): 	\tikzset{external/export next=false}
+
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor} %colour equations
+\usepackage{multicol} %colums
+\usepackage{float} %floating figures
+
+\def \globalscale {1} %Scale of all EE Schematics
+
+\setlength{\parindent}{0pt} %disable annoying indent
+\newcommand{\parallelEE}{\mathbin{\!/\mkern-5mu/\!}} %custom "//" sign
+
+\begin{document}
+\title{Zusammenfassung \\
+Halbleiter-Schaltungstechnik / Electronic Circuits}
+\author{by jdekanter}
+\date{HS 2024 / FS 2025}
+\maketitle 
+
+%\begin{multicols}{2}
+\section{diode.}
+
+\subsection{diode as capacitor}
+
+A diode contains a pn-junction, which grows when a reverse voltage is applied. It thereby forms a capacitor, of which the capacity can be altered by a voltage $V_R$.
+\\
+Built in potential: $V_0 = \frac{kT}{q} \ln\frac{N_A N_D}{n_i^2}$
+\\
+Reverse voltage: $V_R$
+
+\begin{equation}
+\begin{aligned}
+C_{j} &= \frac{C_{j0}}{\sqrt{1-\frac{V_R}{V_0}}}
+\\
+C_{j0} &= \sqrt{\frac{\epsilon_{si} q}{2} \cdot \frac{N_A N_D}{N_A + N_D} \cdot \frac{1}{V_0}}
+\end{aligned}
+\end{equation}
+
+\subsection{\textit{almost} ideal diode (with voltage drop)}
+
+\begin{figure}[H]
+    \centering
+    \include{tikz/almost_ideal_diode}
+    \caption{Ideal diode in ON-region: equivalent circuit}
+\end{figure}
+
+\begin{equation}
+    I_D = 
+    \begin{cases}
+        {I} & {V_D > 0} \\
+        {0} & {V_D \leq 0}
+    \end{cases}      
+\end{equation}
+
+\begin{equation}
+    R_D = 
+    \begin{cases}
+        {0} & {V_D > 0} \\
+        {\infty} & {V_D \leq 0}
+    \end{cases}      
+\end{equation}
+
+A Diode with no voltage drop is called a \textit{ideal} diode.
+
+\subsection{breakdown physics}
+
+A to high reverse voltage will cause a diode to go into "breakdown". This means that the diode won't block the reverse current anymore but will allow current to flow pretty unhindered.
+
+\tikzset{external/export next=false}
+%\iffalse %comment out block
+\begin{figure}[H]
+\centering
+%\include{tikz/diode_UI_curve} %do not externasile, it might not compile
+\begin{tikzpicture}
+    \begin{axis}[
+    	xmin = -0.9,
+    	xmax = 0.9,
+    	ymin = -0.09,
+    	ymax = 0.09,
+        axis lines=middle,
+		every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+		every axis y label/.style={at={(current axis.north)},anchor=south},
+        xlabel={$U$ (Voltage)},
+        ylabel={$I$ (Current)},
+        samples=200,
+        xticklabel=\empty,
+        yticklabel=\empty,
+    ]
+
+    % Forward conduction (exponential growth after threshold voltage)
+		\addplot[red, thick, samples=100, domain=-0.5:0.8, restrict y to domain=0:0.8] {1e-15*exp(40*x)};
+   		\draw[red] (0.5,0) node[below]{forward active};
+		\addplot[blue, thick, samples=100, domain=-1:-0.5, restrict y to domain=-1:1]  {-1e-15*exp(-40*x)};
+		\draw[blue] (-0.5,0) node[above]{breakdown};
+
+ 
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+%\fi
+
+There are two kinds of breakdown phenomena:
+\begin{itemize}
+	\item Zener Breakdown: All the electrons enter breakdown at the same time.
+	\item Avalache Breakdown: A loose electron accelerates and kicks other electrons out of the crystal structure.
+\end{itemize}
+
+\subsubsection{zener diode}
+
+This is a zener Diode:
+
+\begin{figure}[H]{} 
+    \centering
+    \begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+    \draw (zero) [zzD*, l = zener diode] to ++(2,0);
+   	\end{circuitikz}
+    \caption{a zener diode}
+\end{figure}
+
+\subsection{example 3.29 b}
+
+Plot the current through $R_1$ and $D_1$ as a function of $V_{in}$.\\
+Assume a constant-voltage diode model and $V_B = 2 \si{V}$
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/example_3_29_given}
+    \caption{Given Schematic}
+\end{figure}
+
+First, we replace the diodes with their constant-voltage model.
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/example_3_29_simpel}
+    \caption{Schematic with Ideal diode model}
+\end{figure}
+
+From here, we can see that there are 2 possible scenarios for the current:
+
+\begin{itemize}
+	\item $V_{in} << V_{out}$: Current goes through $R_2$ and $D_2$. The slope is $\frac{V_{in}}{V_{out}} = 1$, with an offset of $- V_B + V_{D_2}$
+	\item $V_{in} >> V_{out}$: Current flows through $D_1$, $R_1$ and $R_2$. The slope of the curve is $\frac{R_2}{R_1 + R_2}$ (by the voltage divider rule). The offset of the curve is $- V_{D_1}$. 
+\end{itemize}
+
+To summarize: 
+
+\begin{itemize}
+	\item $V_{out} = V_{in} - V_B + V_{D_2} \quad	V_{in} << V_{out}$
+	\item $V_{out} = (V_{in} - V_{D_1}) \cdot \frac{R_2}{R_1 + R_2} \quad	V_{in} >> V_{out}$
+\end{itemize}
+
+Note: one may ask why the offset in the second equation is multiplied with the scaling factor $\frac{R_2}{R_1 + R_2}$. The short answer to this is that the diode is \textit{in} the voltage divider and therefore influenced by it, but to check this one can connect $V_{in}$ to GND. 
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/example_3_29_offset}
+    \caption{Find the offset}
+    The diode has no effect on the voltages.
+\end{figure}
+ 
+Now we need the exact point where the two lines cross to find the transition point. We will from now on assume that both diodes are equivalent and $V_{D_1}= V_{D_2} = V_D$.
+
+\begin{equation}
+\begin{aligned}
+	V_{in} - V_B + V_{D_2} &= (V_{in} - V_{D_1}) \cdot \frac{R_2}{R_1 + R_2} 
+	\\
+	V_{in} - V_B + V_{D_2} &= V_{in} \cdot \frac{R_2}{R_1 + R_2} - V_{D_1} \cdot \frac{R_2}{R_1 + R_2}
+	\\
+	V_{in} = V_{in} \cdot \frac{R_2}{R_1 + R_2} + V_B & - \frac{R_2}{R_1 + R_2}\cdot V_D - V_D \qquad \text{move all $V_{in}$ to the left}
+	\\
+	V_{in} \cdot \left( 1 - \frac{R_2}{R_1 + R_2} \right) &= V_B - \left( 1 + \frac{R_2}{R_1 + R_2} \cdot \right) V_D \qquad \text{Divide}
+	\\
+	V_{in} = \frac{V_B}{1 - \frac{R_2}{R_1 + R_2}} - \frac{( 1 + \frac{R_2}{R_1 + R_2} \cdot )}{1 - \frac{R_2}{R_1 + R_2}} V_D &= \frac{V_B}{1 - \frac{R_2}{R_1 + R_2}}\mathcolor{red}{ \frac{R_1 + R_2}{R_1 + R_2}} - \frac{( 1 + \frac{R_2}{R_1 + R_2} \cdot )}{1 - \frac{R_2}{R_1 + R_2}} \mathcolor{red}{ \frac{R_1 + R_2}{R_1 + R_2}} V_D
+	\\
+	V_{in} &= V_B \frac{(R_1 + R_2)}{R_1 + R_2 - R_2} - V_D \frac{R_1 + R_2 + R_2}{R_1 + R_2 - R_2}
+	\\
+	V_{in} &= V_B \frac{R_1 + R_2}{R_1} - V_D \frac{R_1 + 2R_2}{R_1}
+	\\
+	V_{in} &= V_B \frac{R_1 + R_2}{R_1} - V_D - V_D\frac{2 R_2}{R_1} \mathcolor{red}{+ V_D - V_D}
+	\\
+	V_{in} &= \frac{R_1 + R_2}{R_1}(V_B - 2V_D) + V_D
+\end{aligned}
+\end{equation}
+
+Thereby the $V_{in}$ - $V_{out}$ relationship is:
+
+\begin{equation}
+V_{out} = 
+\begin{cases}
+V_{in} - V_B + V_D & V_{in} \leq \frac{R_1 + R_2}{R_1}(V_B - 2V_D) + V_D \\
+\frac{R_2}{R_1 + R_2}(V_{in} - V_D) & V_{in} > \frac{R_1 + R_2}{R_1}(V_B - 2V_D) + V_D
+\end{cases}
+\end{equation}
+
+\textit{Plotting the function is left as an exercise to the reader, as it is trivial :P} \\
+Jokes aside, I don't really have time for this one.
+
+\subsection{forward active mode}
+
+Resistors link voltage and current as a linear function $V = f(I) = I \cdot R$ and $I = f(V)^{-1} = V/R$. That function isn't linear anymore in semiconductors.
+\\
+Diode equation:
+\begin{equation}
+\begin{aligned}
+    I_D &= I_S  \cdot \left( e^{\frac {V_D} {V_T}} - 1 \right) \approx I_S  \cdot e^{\frac {V_D} {V_T}} 
+    \\
+    V_D &= V_T \cdot \ln{\left( \frac{I_D}{I_S} \right)}
+\end{aligned}
+\end{equation}
+
+\subsection{small signal model}
+
+first, calculate operating point!
+\\
+After that, we calculate the derivative of the I-V function to get a linear approximation. As long as we stay close to the original operation point (that's why it's called \textit{small} signal model), our approximation is relatively good and we can model the diode as normal (linear) resistor $r_D$. Don't use a offsets voltage, that's wrong.
+\begin{equation}
+\begin{aligned}
+    G \quad \hat{=} \quad \text{[conductance]} = \frac{1}{r_D} &= \frac{dI_D}{dV_D} = \frac{1} {V_T} \cdot \left( I_S \cdot  e^{\frac{V_D}{V_T}} \right)= \frac{I_D}{V_T}
+    \\
+    r_D &= G^{-1} = \frac{V_T}{I_D}
+\end{aligned}
+\end{equation}
+
+\subsection{example 2.29}
+
+\begin{figure}[H]{} 
+	\ctikzset{diodes/scale=0.7}
+    \centering
+    \include{tikz/example_2_29}
+    \ctikzset{diodes/scale=1}
+    \caption{Problem 2.29}
+\end{figure}
+
+The current source supplies $1 \si{mA}$. \\
+We want to find the resistor value $R$, such that $I_R = 0.5 \si{mA}$. \\
+Assume that both diodes are equivalent, $I_S = 10^{-16} \si{A}$.
+\begin{equation}
+\begin{aligned}
+	\text{by using Kirchhoff's law: } I &= I_R + I_{D_1, D_2}
+	\\
+	\text{and: } I_{D_1} &= I_{D_2}
+	\\
+	\to I_{D_1, D_2} &= I - I_R = 1\si{mA} - 0.5\si{mA} = 0.5\si{mA}
+	\\
+	V_R &= V_{D_{1}} + V_{D_{2}}
+	\\
+	\text{U-I function of a diode: }V_{D_{1}} + V_{D_{2}} &= 2 \cdot V_T \cdot \ln{\left( \frac{I_D}{I_S} \right)} = 2 \cdot V_T \cdot \ln{\left( \frac{0.5\si{mA}}{10^{-16} \si{A}} \right)}
+	\\
+	R &= \frac{V_R}{I_R} = \frac{2 \cdot V_T \cdot \ln{\left( \frac{0.5\si{mA}}{10^{-16} \si{A}} \right)}}{0.5 \si{mA}} = 2.87 \si{kOhm}
+\end{aligned}
+\end{equation}
+
+\section{rectifier.}
+
+\subsection{half bridge rectifier}
+
+Input: a sinusodial voltage $V_{in}$ with frequency $f_{in}$.
+
+\begin{figure}[H]{}
+    \centering
+    \include{tikz/half_bridge_rectifier}
+    \caption{half bridge rectifier}
+\end{figure}
+
+We assume the voltage in the capacitor decreases linearly with time and current (In reality it decreases exponentially) ($I_{R_L} = \frac{V_C}{R_L}$). The voltage ripple ($V_R$) is the max difference of $V_{in}$ and $V_{out}$.
+\begin{equation}
+\begin{aligned}
+    &V_{out}(t) \approx (V_{in} - V_{D_{on}}) \cdot \left(1 - \frac{t}{R_LC}\right)
+    \\
+    &V_{out}(t = 0) - V_{out}(t = T) = V_R \approx \frac{V_{in} - V_{D_{on}}}{R_LC\cdot f_{in}}
+\end{aligned}
+\end{equation}
+
+\subsection{full bridge rectifier}
+
+In a full bridge rectifier, the input voltage has to pass trough 2 diodes, thereby doubling the voltage drop. The discharge time gets halved and therefore the voltage ripple too.
+
+\begin{figure}[H]{}
+    \centering
+    \ctikzset{diodes/scale=0.5}
+	\include{tikz/full_bridge_rectifier}
+    \ctikzset{diodes/scale=1}
+    \caption{full bridge rectifier}
+\end{figure}
+
+\begin{equation}
+    V_R \approx \frac{1}{2}\frac{(V_\text{in} - 2\cdot V_{D_{on}})}{R_LC\cdot f_{in}}
+\end{equation}
+
+\section{transistor.}
+
+\begin{figure}[H]{}
+    \centering
+    \include{tikz/transistors}
+    \caption{transistors and their small-signal equivalents}
+\end{figure}
+
+\subsection{forward active region}
+
+$ V_{CE} > V_{BE} > 0 $
+\\
+A transistor will behave as a voltage dependent current source (or a linear current amplifier, but it's easier to adjust voltage then current). The current $I_C$ is exponentially linked to the voltage between base and emitter $V_{BE}$, while the current $I_B$ and $I_C$ are linearly linked. 
+\begin{equation}
+\begin{aligned}
+    I_C &= I_S \cdot e^{\frac{V_{BE}}{V_T}}
+    \\
+    I_C &= \beta \cdot I_B
+    \\
+    I_E &= I_C + I_B = (1+\beta)\cdot I_B = \left( \frac{1}{\beta} + 1 \right) \cdot I_C.
+    \\
+    V_{BE} &= V_T \cdot \ln{\left( \frac{I_C}{I_S}\right)}
+\end{aligned}
+\end{equation}
+
+\subsubsection{small signal model}
+$V_{CE}$ is constant.
+\\
+We take the derivative of the voltage-current function $I_C = f(V_{BE})$ to get a linear approximation of the transconductance (current per voltage).
+\begin{equation} \label{gm_formula}
+%resizebox has been deactivated    \resizebox{0.95\hsize}{!}{$
+    g_m \quad \widehat{=} \quad \text{[transconductance]} = \frac{dI_C}{dV_{BE}} = \frac{1} {V_T} \cdot \left( I_S \cdot e^{\frac{V_{BE}}{V_T}} \right) = \frac{I_C}{V_T}
+%resizebox has been deactivated    $}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+    \Delta I_C &= g_m \cdot \Delta V_{BE}
+    \\
+    \Delta I_B &= \frac{g_m}{\beta} \cdot \Delta V_{BE}
+\end{aligned}
+\end{equation}
+
+We now have a approximation $I_C = g_m \cdot V_{BE}$, and with that, we can model the Basis current $I_B$ as a linear function of $V_{BE}$.
+\\
+We know about the linear dependence $I_C = \beta \cdot I_B$.
+\begin{equation}
+    \rightarrow I_B = \frac{\beta}{I_C} = \frac{\beta}{V_{BE} \cdot g_m}
+\end{equation}
+
+We can find a input resistor $r_\pi$ to model this behavior in a circuit.
+\begin{equation} \label{r_pi_formula}
+    r_\pi = \frac{V_{BE}}{I_B} = \frac{\beta}{g_m} 
+\end{equation}
+
+\subsection{eary effect}
+
+In all previous examples, $I_C$ was independent of $V_{CE}$, but this isn't true in reality.
+$\rightarrow I_C = f(V_{BE}, V_{CE})$
+\\
+The early voltage is $V_A$. This is a kind of scaling factor for the $V_{CE}$ influence.
+\begin{equation}
+    I_C = \left( I_S \cdot e^{\frac{V_{BE}}{V_T}} \right) \cdot \left( 1 + \frac{V_{CE}}{V_A} \right)
+\end{equation}
+
+\subsubsection{small signal model}
+
+We take the derivative of $I_C$ in respect to $V_{CE}$ to approximate a linear dependence, which we model as a resistor $r_o$.
+\begin{equation}
+%resizebox has been deactivated \resizebox{1\hsize}{!}{$
+    g_o \quad \hat{=} \quad \text{[conductance]} = \frac{dI_C}{dV_{CE}} = \frac{dI_C}{dV_{CE}} \left( \frac{V_{CE} \cdot I_C}{V_A} + I_C \right) = \frac{I_C}{V_A}
+%resizebox has been deactivated    $}
+\end{equation}
+
+\begin{equation}
+    r_o = \frac{dV_{CE}}{dI_C} = \frac{V_A}{I_C}
+\end{equation}
+
+\subsection{example 4.55}
+
+Consider this circuit, where $I_{S_1} = 3 I_{S_2} = 5 \cdot 10^{-16} A$, $\beta_1 = 100$, $\beta_2 = 50$, $V_A = \infty$, and $R_C = 500 \Omega$. 
+\\
+
+\begin{enumerate}[a.]
+\item 
+What is the maximum allowable value of $V_{in}$, such that the forward collector-basis bias of $Q_2$ does not exceed $0.2 V$?
+\item
+Construct the small-signal equivalent circuit.
+\end{enumerate}
+
+$V_A = \infty \to$ that means we can neglect the early effect.
+\\
+You may be tempted to draw a voltage arrow for the $Q_2$ transostor from collector to base, but this is actually wrong. $Q_2$ is a NPN transistor. That means that the collector is made out of N-type material, and the base is made out of P-type material. So the PN-junction actually goes from base to collector and if we want to forward bias it by $\max 0.2 V$, then the \textbf{base is at a higher potential than the collector}. 
+
+\begin{figure}[H]{} 
+    \centering
+    \begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+	%Voltage source
+	\draw (0,2) to [vsourcesin, l_ = $V_{in}$] ++(0,-2) node[tlground]{};
+	\draw (2 ,2) node[npn](Q1){$Q_1$};
+	\draw (0,2) to[short] (Q1.B);
+    \draw (4,0) node[npn](Q2){$Q_2$};
+    \draw (Q2.C) to[short, *-o] ++(1,0) node[right]{$V_{out}$};
+    \draw (Q1.E) to[short] (2,0) to[short] (Q2.B);
+    \draw (Q2.E) node[tlground]{};
+    \draw (Q2.C) to[R, l = $\SI{500}{\ohm}$] ++(0,2) coordinate(top);
+    \draw (top) to[short, *-] ++(-2,0) to [short] (Q1.C);
+    \draw (top) to [short] ++(2,0) to[battery1] ++(0,-1) node[tlground]{} ++(0.5,0.5) node[right]{$V_{cc} = 2.5V$};
+    \draw[blue] (Q2.B) ++(-0.5,0) to[open, v^ = $ $] (Q2.C);
+    \draw[blue] (Q2.C) ++(0, 0.2) node[left] {max $0.2 V$};
+    \end{circuitikz}
+    \caption{given circuit}
+\end{figure}
+
+The first step is to calculate this circuit is to use Kirchhoffs law to set up the equation.
+It is also important to remember that in a transistor, the base current and the collector current combine to form the emitter current.
+
+\begin{equation}
+I_E = I_B + \underbracket{I_C}_{= \beta \cdot I_B} = (1 + \beta) \cdot I_B = \left(1 + \frac{1}{\beta} \right) \cdot I_C 
+\end{equation}
+
+\begin{figure}[H]{} 
+
+    \centering
+    \begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+	%Voltage source
+	\draw (0,2) to [vsourcesin, l_ = $V_{in}$] ++(0,-2) node[tlground]{};
+	\draw (2 ,2) node[npn](Q1){$Q_1$};
+	\draw (0,2) to[short, i = $I_{B_1}$] (Q1.B);
+    \draw (4,0) node[npn](Q2){$Q_2$};
+    \draw (Q2.C) to[short, *-o] ++(1,0) node[right]{$V_{out}$};
+    \draw (Q1.E) to[short, i_ = $I_{E_1}$] (2,0) to[short] (Q2.B);
+    \draw (Q2.E) node[tlground]{};
+    \draw (Q2.C) to[R, l = $\SI{500}{\ohm}$, i<_ = $I_{C_2}$] ++(0,2) coordinate(top);
+    \draw (top) to[short, *-] ++(-2,0) to [short] (Q1.C);
+    \draw (top) to [short] ++(3,0) to[battery1] ++(0,-1) node[tlground]{} ++(0.5,0.5) node[right]{$V_{cc} = 2.5V$};
+    \draw[blue] (Q2.B) ++(-0.5,0) to[open, v^ = $ $] (Q2.C);
+    \draw[blue] (Q2.C) ++(0, 0.2) node[left] {max $0.2 V$};
+    \draw[blue] (Q2.B) ++(-0.5,0) to[open, v = $V_{BE_2}$] (Q2.E);
+    \draw[gray,->] (top) ++(2.5,-1) arc (20:360:0.4 and 1);
+    \draw[gray] (top) ++(3,-2.5) node[]{Kirchhoff};
+    \end{circuitikz}
+    \caption{use Kirchhoffs law}
+\end{figure}
+
+\begin{equation}
+\begin{aligned}
+V_{cc} + \underbracket{V_{BC_2}}_{= 0.2 V} &= V_{R_C} + V_{BE_2} \quad \text{using Kirchhoffs law}
+\\
+V_{BE_2} &= V_{cc} + 0.2V - I_{C_2}R_C \quad
+\\
+V_T \log \left( \frac{I_{C_2}}{I_{S_2}} \right) &= V_{cc} + 0.2V - I_{C_2}R_C \quad \to \text{use calculator to solve for} I_{C_2} \text{!}
+\\
+\to & \text{calculator: } I_{C_2} = 3.80 \text{mA}
+\\
+V_{BE_2} &= V_T \log \left( \frac{I_{C_2}}{I_{S_2}} \right) = 799.7 \text{mV} \quad \to \text{we will need this later}
+\\
+I_{B_2} &= \frac{I_{C_2}}{\beta_2} = I_{E_1} = I_{C_1} \left(1 + \frac{1}{\beta_1} \right)
+\\
+I_{C_1} &= I_{C_2} \cdot \frac{1}{\left(1 + \frac{1}{\beta_1} \right) \cdot \beta_2} = 75.2 \mu \text{A}
+\\
+V_{BE_1} &= V_T \log \left( \frac{I_{C_1}}{I_{S_1}} \right) = 669.2 \text{mV}
+\\
+V_{in} &= V_{BE_1} + V_{BE_2} = 1.469 \text{mV}
+\end{aligned}
+\end{equation}
+Therefore, $V_{in} \leq  1.469 \text{mV}$
+\\
+\\
+Now, lets construct the small signal equivalent model.
+Note: $V_A = \infty$, therefore we can ignore all $r_o$ resistors. We cancel all static voltage sources and replace all transistor with their small signal equivalent circuit.
+
+\begin{figure}[H]{} 
+    \centering
+    \begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \draw (0,2) to [vsourcesin, l_ = $V_{in}$] ++(0,-4) node[tlground]{};
+    \draw (0,2) to [short] ++(2,0) to [R, l = $r_{\pi_1}$] ++(0,-2) to [short] ++(1,0) coordinate(mid) to [short, *-] ++(1,0);
+    \draw (4,2) node[tlground, rotate = 180]{} to [american current source, l = $g_{m_1}\cdot V_{r_{\pi_1}}$] ++(0, -2);
+    \draw (mid) to [R, l = $r_{\pi_2}$] ++(0,-2) to [short] ++(2,0) node[ground]{} to [short, *-] ++(2,0);
+    \draw (7,2) node[tlground, rotate = 180]{} to[R, l = $R_C$] ++(0,-2) to[short, *-o] ++(1,0) node[right]{$V_{out}$} ++(-1,0) to [american current source, l = $g_{m_2}\cdot V_{r_{\pi_2}}$] ++(0, -2);
+    \end{circuitikz}
+    \caption{small signal equivalent circuit}
+\end{figure}
+
+Now we can calculate the all the values using the formulas \eqref{gm_formula} and \eqref{r_pi_formula}.
+
+\begin{equation}
+\begin{aligned}
+g_{m_1} &= \frac{I_{C_1}}{V_T} = \SI{2.895}{mS}
+\\
+g_{m_2} &= \frac{I_{C_2}}{V_T} = \SI{146.2}{mS}
+\\
+r_{\pi_1} &= \frac{\beta_1}{g_{m_1}} = \SI{34.55}{k \ohm}
+\\
+r_{\pi_2} &= \frac{\beta_2}{g_{m_2}} = \SI{342.1}{\ohm}
+\end{aligned}
+\end{equation}
+
+
+\subsection{saturation mode}
+
+\subsubsection{soft saturation mode}
+
+$V_{BE} > V_{CE}$
+\\
+$V_{BC} < 400$ mV
+
+\subsubsection{deep saturation}
+
+$V_{BE} > V_{CE}$
+\\
+$V_{BC} > 400$ mV
+
+\subsection{bipolar amplifiers}
+Any capacitors are a open circuit in DC-analysis, and a short circuit in AC-analysis!\\
+
+
+
+\section{MOSFET}
+
+\begin{figure}[H]{}
+    \centering
+    \include{tikz/mosfets}
+%\caption{Both MOSFET types}
+\end{figure}
+
+\subsection{Derivation of $I_D$ in the triode region}
+
+for a NMOS MOSFET!
+
+\begin{figure}[H]{}
+    \centering
+    \include{tikz/mosfet_derivation}
+\caption{MOSFET: simplified internal schematic}
+\end{figure}
+
+The Gate terminal forms a capacitor, with $C_{ox}$ \quad [$\frac{\text{F}}{\text{m}^2}$] being the capacitance per area.
+This capacity is, for height $h$, area $A$, vacuum permittivity $\epsilon_0$ and permittivity of the oxide layer $\epsilon_r$:
+\begin{equation}
+    C_{ox} = \frac{C}{A} = \frac{A \cdot \epsilon_0 \epsilon_r}{A \cdot h} = \frac{\epsilon_0 \epsilon_r}{h}
+\end{equation}
+The charge that's being stored in the capacitor in the top plate of the capacitor (the Gate terminal) is equal to the free charge in the body of the MOSFET, which enable current flow.
+The charge in the Gate capacitor is capacity times voltage ($Q = C \cdot V$), but there is more voltage needed to free enough charge in the body, so the voltage between the Gate and the MOSFET body is offset by $V_{th}$.
+\begin{equation}
+    Q_{\text{Gate}} = C \cdot V = A \cdot C_{ox} \cdot (V_{GX} - V_{th}) = Q_{\text{body}}
+\end{equation}
+The voltage in the body of the MOSFET isn't the same everywhere (it varies between $V_D$ and $V_S$), so the Gate-to-body voltage is a function of position $V_{GX} = V_G - V_X(x)$. Luckily, because the voltage drop from $V_D$ to $V_S$ is linear across the MOSFET, we can take the average voltage of $V_X(x)$ which is $\frac{1}{2}(V_D - V_S)$. So $\rightarrow V_{GX} = V_{GS} - V_X = V_{GS} - \frac{1}{2}V_{DS}$.
+\begin{equation}
+    Q = A \cdot C_{ox} \cdot (V_{GX} - V_{th}) = A \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})
+\end{equation}
+The area $A$ is length ($L$) times width ($W$).
+\begin{equation}
+    Q = W \cdot L \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})
+\end{equation}
+Current can be written as charge per time ($I = \frac{Q}{t}$). But the time $t$ is no use to us, so we replace it with velocity and distance ($t = \frac{x}{v_x}$). 
+\begin{equation}
+    I = \frac{Q}{t}= \frac{v_x \cdot Q}{x} = \frac{v_x \cdot Q}{L}
+\end{equation}
+The current $I$ must be the same everywhere (Kirchhoff's law), although the velocity $v_x$ is not, but that doesn't matter, because this is canceled out by the uneven charge density.
+\begin{equation}
+    I = \frac{v_x \cdot Q}{L} = \frac{v_x \cdot W \cdot L \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})}{L}
+\end{equation}
+The velocity $v_x$ is equal to $\mu_n \cdot \vec{E} $, where $\mu_n$ is the charge mobility (a material constant) and $\vec{E}$ is the strength of the electric field, produced by $V_{DS}$. We assume the electric field is homogeneous everywhere in $L$.
+\begin{equation}
+\begin{aligned}
+    I &= \frac{\mu_n \cdot \vec{E} \cdot W \cdot L \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})} {L} 
+    \\
+    &= \frac{\mu_n \cdot \frac{V_{DS}}{L} \cdot W \cdot L \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})} {L} 
+    \\
+    &= \frac{\mu_n \cdot V_{DS} \cdot  W \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})} {L}
+\end{aligned}
+\end{equation}
+By multipying $V_{DS}$ with $(V_{GS} - \frac{1}{2}V_{DS} - V_{th})$, we get:
+\begin{equation}
+\begin{aligned}
+    I &= \mu_n \frac{W}{L}\cdot C_{ox} \cdot ((V_{GS} - V_{th})V_{DS} - \frac{V_{DS}^2}{2}) 
+    \\
+    &= \frac{1}{2} \mu_n \frac{W}{L} C_{ox} \cdot (2(V_{GS} - V_{th})V_{DS} - {V_{DS}^2})
+\end{aligned}
+\end{equation}
+
+\subsection{cutoff region ($V_{GS} \leq V_{th}$)}
+
+The MOSFET device is off, no current flows.
+
+\subsection{triode/linear/ohmic region}
+
+$V_{DS} < (V_{GS} - V_{th})$
+\\
+Deep saturation region: $V_{DS} \ll 2(V_{GS} - V_{th})$
+\begin{equation}
+    I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} \cdot (2(V_{GS} - V_{th})V_{DS} - {V_{DS}^2})
+\end{equation}
+
+($V_{DS} = V_{GS} - V_{th}$) $\rightarrow$ The maximum achievable current is: 
+\begin{equation}
+    I_{D_{\text{max}}} = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} \cdot (V_{GS} - V_{th})
+\end{equation}
+
+\subsubsection{small signal model}
+
+The MOSFET can be modelled as a voltage-dependent resistor, with resistance $R_{on}$.
+\begin{equation}
+   R_{on} = \frac{1}{\mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{th})}
+\end{equation}
+
+\subsection{saturation region}
+
+$V_{DS} > (V_{GS} - V_{th})$
+
+\subsubsection{channel-length modulation}
+
+$\lambda$ is called the channel-length modulation coefficient. This effect is similar to the early effect in transistors. It artificially lowers the channel length in the MOSFET by "pinching off" the current $I_D$, when $V_{DS}$ gets to big. $\lambda$ is inversely proportional to $L$.
+\begin{equation}
+    I_D= \frac{1}{2}\mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{th})^2 \cdot (1 + \lambda \cdot V_{DS}) 
+\end{equation}
+
+\subsubsection{small signal model}
+
+The MOSFET can be modeled as a voltage-dependent current source (an increase in $V_{DS}$ does not yield an increase in $I_D$) with transconductance $g_m$.
+\begin{equation}
+    % \resizebox{.9\hsize}{!}{$
+    g_m = \frac{dI_D}{dV_{GS}} = \mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{th}) = \sqrt{2 \mu_n C_{ox} \frac{W}{L} I_D} = \frac{2 \cdot I_D}{(V_{GS} - V_{th})}
+    % $}
+\end{equation}
+Taking the channel-length modulation effect in consideration, we get:
+\begin{equation}
+    r_o = \frac{dV_{DS}}{dI_D} = \frac{1}{\frac{1}{2}\mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{th})^2 \cdot\lambda} \approx \frac{1}{\lambda \cdot I_D}
+\end{equation}
+
+\subsubsection{Velocity Saturation}
+
+Normally, the electric field $\vec{E}$ accelerates electrons to a velocity $v_x$, but in reality, a certain velocity $v_{max}$ can't be exceeded. ($\rightarrow$ We replace $v_x$ with $v_{max}$)
+\begin{equation}
+\begin{aligned}
+    I =& \ \frac{v_x \cdot Q}{L} = \frac{v_{max} \cdot W \cdot L \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})}{L}
+    \\
+    =& \ v_{max} \cdot W \cdot C_{ox} \cdot (V_{GS} - \frac{1}{2}V_{DS} - V_{th})
+\end{aligned}
+\end{equation}
+The resulting equation yields: (I don't know where the $- \frac{1}{2}V_{DS}$ went)
+\begin{equation}
+    I_D = \ v_{max} \cdot W \cdot C_{ox} \cdot (V_{GS}- V_{th})
+\end{equation}
+
+\subsection{body effect}
+
+\subsection{figure: different operation regions}
+
+This figure plots the different equations for $I_D$ in the different operation regions.
+
+\tikzset{external/export next=false}
+%\iffalse
+\begin{figure}[H]
+\centering
+    \caption{I-V Plot for MOSFET in different operational regions}
+\def \plotVGS {1.1}
+\def \plotVTH {0.4}
+\def \plotWL {20/0.18}
+\def \plotlamda {0.05}
+%\include{tikz/mosfet_operating_regions}
+\begin{tikzpicture}[]
+\pgfplotsset{xmin = 0, xmax = 2.5, ymin = 0,
+ylabel={$I_D$ [A]},
+xlabel={$V_{DS}$ [V]}}
+\begin{axis}[scaled ticks=false,
+    width=0.4\textwidth,
+    height=0.2\textheight,
+    ]
+\addplot[color=red, samples = 200]{
+(1/2)*(200/1000000)*(\plotWL)*(2*(\plotVGS - \plotVTH)*x -x^2)
+};
+\addplot[domain = (\plotVGS - \plotVTH):4, color=orange, samples = 100]{(1/2)*(200/1000000)*(\plotWL)*((\plotVGS - \plotVTH)^2)};
+\node [color=red] at (1.8,2*10^-3) {Triode/Linear/Ohmic};
+\node [color=orange] at (2,5*10^-3) {Saturation, $\lambda = 0$};
+\addplot[domain = (\plotVGS - \plotVTH):4, color=blue, samples = 100]{(1/2)*(200/1000000)*(\plotWL)*((\plotVGS - \plotVTH)^2)*(1 + \plotlamda*x};
+\node [color=blue, above] at (2,5.5*10^-3) {{Saturation, $\lambda \neq 0$}};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+%\fi
+
+\section{MOSFET: tricky situations.}
+
+\subsection{The $R_{tot} \parallelEE I_q$ technique}
+
+\subsubsection{common source}
+A lot of MOSFET amplifier circuits can be transformed into the following form:
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/mosfet_common_source}
+\end{figure}
+
+\begin{equation}
+    V_{out} = -(R_{tot} \parallelEE r_o)\cdot g_m \cdot V_{GS}
+\end{equation}
+\subsubsection{common source \& source follower}
+With degeration!
+\\
+In a common source circuit, we search for $V_{out}$ and in a source follower, we search for $V_{R_S}$.
+\def \localscale {\globalscale*0.8} %scale even lower!
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/mosfet_common_source_and_follower}
+\caption{What is $V_{out}$?}
+
+\end{figure}
+
+We transform the current source $\parallelEE$ $r_o$ into a equivalent Thevenin voltage.
+\begin{equation}
+\begin{aligned}
+    V_{out} =& \underbracket{-g_m V_{GS} r_o}_\text{Thevenin voltage} \underbracket{\frac{R_D}{R_D+r_o+R_S}}_\text{voltage divider} = V_{R_D}
+    \\
+    V_{GS} =& V_{in} - V_{R_S} 
+    \\
+    V_{R_S} =& \underbracket{g_m V_{GS} r_o}_\text{Thevenin voltage} \underbracket{\frac{R_S}{R_D + r_o + R_S}}_\text{voltage divider}
+    \\
+    V_{in} =&  V_{GS}\cdot (1 + \frac{g_m r_o R_S}{R_D + r_o + R_S}) &\text{solving for $V_{GS}$}
+    \\
+    \rightarrow
+    V_{GS} =& \frac{V_{in}}{1 +\frac{g_m r_o R_S}{R_D+r_o+R_S}}
+    \\
+    V_{out} =& \frac{V_{in}}{1 +\frac{g_m r_o R_S}{R_D+r_o+R_S}} \frac{-g_m r_o R_D}{R_D+r_o+R_S} &\text{putting in $V_{GS}$}
+    \\
+    V_{out} =& V_{in} \frac{-g_m r_o R_D}{R_D+r_o+R_S + g_m r_o R_S} 
+    \\
+    V_{R_S} =& \frac{V_{in}}{1 +\frac{g_m r_o R_S}{R_D+r_o+R_S}} \frac{g_m r_o R_{S}}{R_D+r_o+R_S} &\text{putting in $V_{GS}$}
+    \\
+    V_{R_S} =& V_{in} \frac{g_m r_o R_{S}}{R_D+r_o+R_S + g_m r_o R_S} &\text{notice that $V_{R_S} < V_{in}$}
+\end{aligned}
+\end{equation}
+
+\subsubsection{finding $R_{tot}$}
+
+\begin{figure}[H]{}
+    \centering
+	\include{tikz/mosfet_finding_Rtot}
+\caption{What is the resistance $R_{tot}$?}
+$V_{GS} = 0 - V_{R_S}$
+\end{figure}
+
+The left Norton circuit (current source $\parallelEE$ resistor) can be replaced by a equivalent Thevenin circuit. The resulting total resistance can be calculated by a test-current $I_X$.
+\begin{equation}
+\begin{aligned}
+    V_X &= --V_{R_S} \cdot g_m R_{o} + I_X R_{o} + I_X R_S
+    \\
+    &=I_X R_S \cdot g_m R_{o} + I_X R_{o} + I_X R_S 
+    \\
+    R_{tot} &= \frac{V_X}{I_X} = R_S + R_S g_m R_{o} + R_{o}
+\end{aligned}
+\end{equation}
+
+\section{OP-AMP's}
+
+Its very important to differentiate between a \textit{open loop} or \textit{closed loop} amplifier.
+
+\subsection{open loop.}
+
+Open loop amplifiers are basically useless!
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/amp_open_loop}
+    \caption{open loop op-amp}
+\end{figure}
+
+The op-amp amplifies any voltage difference of $V_{in}$ and GND with $\infty$ amplification. However, this is not possible in reality, so $V_{out}$ runs into the supply voltage.
+\begin{equation}
+    V_{out} = 
+    \begin{cases}
+        {V_{cc}} & {V_{in} > 0} \\
+        0     & {V_{in} = 0} \\
+        {V_{ee}} & {V_{in} < 0}
+    \end{cases}      
+\end{equation}
+We don't always draw the supply voltages, but don't forget that $V_{out}$ can never be greater than the supply voltage.
+
+\subsection{closed loop.}
+
+\begin{figure}[H]{} 
+    \centering
+	\include{tikz/amp_closed_loop}
+    \caption{non-inverting closed loop op-amp}
+\end{figure}
+
+\begin{equation}
+\begin{aligned}
+    V_{out} =& A_0 \cdot (V_{in} - V_-)
+    \\
+    V_- =& V_{out} \cdot \frac{R_2}{R_1 + R_2}
+    \\
+    V_{out} =& A_0 V_{in} - A_0 V_{out} \cdot \frac{R_2}{R_1 + R_2}
+    \\
+    A_0 V_{in} =& V_{out} \cdot (1 + A_0 \cdot \frac{R_2}{R_1 + R_2}) 
+    \\
+    V_{out} &= \frac{A_0 V_{in}} {1 + A_0 \cdot \frac{R_2}{R_1 + R_2}} \cdot \color{red}{ \frac{R_1 + R_2}{R_1 + R_2}}
+    \\
+    V_{out} =& V_{in} \cdot \frac{A_0 (R_1 + R_2)}{R_1 + R_2 + A_0 R_2}
+    \\
+    \lim_{A_0\to\infty} V_{out} =& V_{in}\frac{R_1 + R_2}{R_2} = V_{in} \cdot (1 + \frac{R_1}{R_2})
+\end{aligned}
+\end{equation}
+
+\section{current mirrors.}
+
+\begin{figure}[H]{} 
+    \centering
+	\include{tikz/mosfet_current_mirror}
+    \caption{MOSFET current mirror}
+\end{figure}
+
+\begin{figure}[H]{} 
+    \centering
+    \include{tikz/transistor_current_mirror}
+    \caption{transistor current mirror}
+\end{figure}
+
+\section{end}
+
+%\end{multicols}
+\end{document} 

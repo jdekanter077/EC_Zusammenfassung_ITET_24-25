@@ -1,0 +1,21 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zzero) at (0,0);
+    \draw (zzero) ++(0,1) node[nmos]{$M$};
+    \draw (zzero) ++(0,1 + \globalscale) to [R, l = $R_{tot}$] (0,3.5);
+    \draw (zzero) ++(0,3.5) node[vcc]{$V_{DD}$};
+    \draw (zzero) node[ground]{};
+    \draw (zzero) to [short] ++(0,\globalscale);
+    \draw (zzero) ++(0,1 + \globalscale) to [short, *-o] ++(1,0);
+    \draw (zzero) ++(1,1 + \globalscale) node[right]{$V_{out}$};
+    
+    \coordinate (zero) at (4,0);
+    \draw (zero) ++(0,2) to[current source, i = $I$, l_ = $g_m \cdot V_{GS}$] ++(0,-2);
+    \draw (zero) to[short] ++(4,0);
+    \draw (zero) ++(2,0) to [R, l = $r_o$] ++(0,2);
+    \draw (zero) ++(4,0) to [R, l = $R_{tot}$] ++(0,2);
+    \draw (zero) ++(0,2) to[short] ++(4,0);
+    \draw (zero) ++(2,0) node[ground]{};
+    \draw (zero) ++(2,2) to[short,*-o] ++(0,0.5);
+    \draw (zero) ++(2,2.5) node[above]{$V_{out}$};
+    \draw (zero) ++(2,0) to [short, *-*] ++(0,0);
+\end{circuitikz}

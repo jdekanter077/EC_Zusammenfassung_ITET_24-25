@@ -1,0 +1,11 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (one) at (0,0);
+    \draw (one) ++(0,1) node[npn, xscale = -1](Q1){} node[left] {Q1}; 
+    \draw (one) ++(0,3) [american current source, l = $I_{REF}$] to (Q1.C);   
+    \draw (Q1.E) to[short] ++(0,-0.2) node[ground]{};
+    \draw (Q1.B) to[short, *-] (Q1.B |- Q1.C) to[short, -*] (Q1.C);
+    \draw (3,1) node[npn](Q2){Q2};
+    \draw (Q1.B) to[short] (Q2.B); 
+    \draw (Q2.C) ++(0,1) to[short, i = $I_{REF}$] (Q2.C);
+    \draw (Q2.E) to[short] ++(0,-0.2) node[ground]{};
+\end{circuitikz}

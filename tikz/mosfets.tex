@@ -1,0 +1,30 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+   
+    \draw(0,0) node[nmos]{NMOS MOSFET};
+    \draw (0,1) node[above] {Drain};
+    \draw (-1,0) node[left] {Gate};
+    \draw (0,-1) node[below] {Source};
+    
+    \draw (7,0) node[pmos]{PMOS MOSFET};
+    \draw (7,1) node[above] {Source};
+    \draw (6,0) node[left] {Gate};
+    \draw (7,-1) node[below] {Drain};
+    %\draw (-2,0) to [open](9,0); %Centering
+
+    \coordinate (ssm) at (-1,-4);
+
+    \draw (ssm) node[left]{Source} to [short, o-*] ++(2,0) to [short, *-] ++(1,0);
+    \draw (ssm)++(0,2) node[left] {Gate} to [short, o-o] ++(0,0);
+    \draw (ssm) ++(0,2) to [open, v = $V_{GS}$] ++(0,-2);
+    \draw (ssm) ++(2,2) to [american current source, i = $I$, l_ = $g_m \cdot V_{GS}$] ++(0,-2);
+    \draw (ssm) ++(3,0) to [R, l_ = $r_o$] ++(0,2);
+    \draw (ssm) ++(2,2) to [short, -*] ++(1,0) to [short,-o]++(0.5,0) node[right]{Drain};
+
+    \coordinate (ssm2) at (6,-4);
+    
+    \draw (ssm2) to [short,o-o] ++(0,0) node[left] {Gate} to [open, v^ = $V_{GS}$] ++(0,2);
+    \draw (ssm2)++(0,2) node[left] {Source} to [short, o-*] ++(2,0) to [short] ++(1,0);
+    \draw (ssm2) ++(2,2) to [american current source, i = $I$, l_ = $g_m \cdot V_{GS}$] ++(0,-2);
+    \draw (ssm2) ++(3,0) to [R, l_ = $r_o$] ++(0,2);
+    \draw (ssm2) ++(2,0) to [short] ++(1,0) to [short, *-o] ++(0.5,0) node[right]{Drain};
+\end{circuitikz}

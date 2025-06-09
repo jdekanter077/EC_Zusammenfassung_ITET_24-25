@@ -1,0 +1,7 @@
+\begin{circuitikz}[european, scale = \globalscale, transform shape]
+    \coordinate (zero) at (0,0);
+	\draw (zero) node[tlground]{};
+	\draw (zero) to[D*, l = Ideal] ++(0,2) to[battery1, v = $V_{D_1}$] ++(0,2) to[short] ++(2,0) to [R, l = $R_1$] ++(0,-2) to[R, l = $R_2$] ++(0,-2);
+	\draw (zero) ++(2,0) node[tlground]{};
+	\draw (zero) ++(2, 2) to[short, *-o] ++(1,0) node[right]{$V_{out} = -V_{D_1}\cdot \frac{R_2}{R_1 + R_2}$};
+\end{circuitikz}
