@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  9 JUN 2025 11:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  9 JUN 2025 11:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -866,41 +866,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 549--550
 ]
 \openout2 = `tikz/mosfet_common_source.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source.tex) [11]
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source.tex) [11
+
+
+
+]
 \openout2 = `tikz/mosfet_common_source_and_follower.aux'.
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source_and_follower.tex
 \absvshift=\dimen358
 \absvshift=\dimen359
 \absvshift=\dimen360
-) [12
-
-
-
-
-
-
-]
+)
 \openout2 = `tikz/mosfet_finding_Rtot.aux'.
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_finding_Rtot.tex
 \absvshift=\dimen361
 \absvshift=\dimen362
 \absvshift=\dimen363
-)
+) [12
+
+
+
+]
 \openout2 = `tikz/amp_open_loop.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_open_loop.tex) [13
-
-
-
-]
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_open_loop.tex)
 \openout2 = `tikz/amp_closed_loop.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_closed_loop.tex)
-\openout2 = `tikz/mosfet_current_mirror.aux'.
-
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_current_mirror.tex) [14
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_closed_loop.tex) [13
 
 
 
@@ -908,31 +902,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 549--550
 
 
 ]
+\openout2 = `tikz/mosfet_current_mirror.aux'.
+
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_current_mirror.tex)
 \openout2 = `tikz/transistor_current_mirror.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistor_current_mirror.tex) [15
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistor_current_mirror.tex) [14
 
 
 
 
 
 
-] (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.aux (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/almost_ideal_diode.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_given.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_2_29.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/half_bridge_rectifier.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/full_bridge_rectifier.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistors.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_given_circuit.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_Kirchhoff.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_ssm.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_BipolAMP.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_ssm.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_res_par_curr.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_simple_ssm.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfets.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source_and_follower.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_finding_Rtot.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_open_loop.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_closed_loop.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_current_mirror.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistor_current_mirror.aux))
+
+
+
+] [15] (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.aux (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/almost_ideal_diode.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_given.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_2_29.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/half_bridge_rectifier.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/full_bridge_rectifier.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistors.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_given_circuit.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_Kirchhoff.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_ssm.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_BipolAMP.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_ssm.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_res_par_curr.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_simple_ssm.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfets.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source_and_follower.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_finding_Rtot.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_open_loop.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_closed_loop.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_current_mirror.aux) (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistor_current_mirror.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 55584 strings out of 474116
- 1568405 string characters out of 5743682
- 2216987 words of memory out of 5000000
- 77262 multiletter control sequences out of 15000+600000
+ 55148 strings out of 474116
+ 1555775 string characters out of 5743682
+ 2185809 words of memory out of 5000000
+ 76826 multiletter control sequences out of 15000+600000
  569421 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,15n,107p,791b,2191s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,15n,107p,791b,1446s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.pdf" (15 pages, 318402 bytes).
+Output written on "/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.pdf" (15 pages, 313481 bytes).
 PDF statistics:
  157 PDF objects out of 1000 (max. 8388607)
  99 compressed objects within 1 object stream

@@ -680,40 +680,40 @@ The resulting equation yields: (I don't know where the $- \frac{1}{2}V_{DS}$ wen
 
 \subsection{body effect}
 
-\subsection{figure: different operation regions}
-
-This figure plots the different equations for $I_D$ in the different operation regions.
-
-\tikzset{external/export next=false}
-%\iffalse
-\begin{figure}[H]
-\centering
-    \caption{I-V Plot for MOSFET in different operational regions}
-\def \plotVGS {1.1}
-\def \plotVTH {0.4}
-\def \plotWL {20/0.18}
-\def \plotlamda {0.05}
-%\include{tikz/mosfet_operating_regions}
-\begin{tikzpicture}[]
-\pgfplotsset{xmin = 0, xmax = 2.5, ymin = 0,
-ylabel={$I_D$ [A]},
-xlabel={$V_{DS}$ [V]}}
-\begin{axis}[scaled ticks=false,
-    width=0.4\textwidth,
-    height=0.2\textheight,
-    ]
-\addplot[color=red, samples = 200]{
-(1/2)*(200/1000000)*(\plotWL)*(2*(\plotVGS - \plotVTH)*x -x^2)
-};
-\addplot[domain = (\plotVGS - \plotVTH):4, color=orange, samples = 100]{(1/2)*(200/1000000)*(\plotWL)*((\plotVGS - \plotVTH)^2)};
-\node [color=red] at (1.8,2*10^-3) {Triode/Linear/Ohmic};
-\node [color=orange] at (2,5*10^-3) {Saturation, $\lambda = 0$};
-\addplot[domain = (\plotVGS - \plotVTH):4, color=blue, samples = 100]{(1/2)*(200/1000000)*(\plotWL)*((\plotVGS - \plotVTH)^2)*(1 + \plotlamda*x};
-\node [color=blue, above] at (2,5.5*10^-3) {{Saturation, $\lambda \neq 0$}};
-\end{axis}
-\end{tikzpicture}
-\end{figure}
-%\fi
+%\subsection{figure: different operation regions}
+%
+%This figure plots the different equations for $I_D$ in the different operation regions.
+%
+%\tikzset{external/export next=false}
+%%\iffalse
+%\begin{figure}[H]
+%\centering
+%    \caption{I-V Plot for MOSFET in different operational regions}
+%\def \plotVGS {1.1}
+%\def \plotVTH {0.4}
+%\def \plotWL {20/0.18}
+%\def \plotlamda {0.05}
+%%\include{tikz/mosfet_operating_regions}
+%\begin{tikzpicture}[]
+%\pgfplotsset{xmin = 0, xmax = 2.5, ymin = 0,
+%ylabel={$I_D$ [A]},
+%xlabel={$V_{DS}$ [V]}}
+%\begin{axis}[scaled ticks=false,
+%    width=0.4\textwidth,
+%    height=0.2\textheight,
+%    ]
+%\addplot[color=red, samples = 200]{
+%(1/2)*(200/1000000)*(\plotWL)*(2*(\plotVGS - \plotVTH)*x -x^2)
+%};
+%\addplot[domain = (\plotVGS - \plotVTH):4, color=orange, samples = 100]{(1/2)*(200/1000000)*(\plotWL)*((\plotVGS - \plotVTH)^2)};
+%\node [color=red] at (1.8,2*10^-3) {Triode/Linear/Ohmic};
+%\node [color=orange] at (2,5*10^-3) {Saturation, $\lambda = 0$};
+%\addplot[domain = (\plotVGS - \plotVTH):4, color=blue, samples = 100]{(1/2)*(200/1000000)*(\plotWL)*((\plotVGS - \plotVTH)^2)*(1 + \plotlamda*x};
+%\node [color=blue, above] at (2,5.5*10^-3) {{Saturation, $\lambda \neq 0$}};
+%\end{axis}
+%\end{tikzpicture}
+%\end{figure}
+%%\fi
 
 \section{MOSFET: tricky situations.}
 
