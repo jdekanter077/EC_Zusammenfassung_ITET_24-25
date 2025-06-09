@@ -410,8 +410,6 @@ INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/almost_
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/almost_ideal_diode.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/almost_ideal_diode.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-OUTPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.pdf
-INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.tex
@@ -420,6 +418,9 @@ OUTPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.tex
+OUTPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.pdf
+INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_given.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_given.tex
 OUTPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_given.aux
@@ -432,7 +433,6 @@ OUTPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/exampl
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.tex
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.tex
 INPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.tex
 OUTPUT /Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.aux

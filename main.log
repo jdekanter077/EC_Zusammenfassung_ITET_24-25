@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  9 JUN 2025 10:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  9 JUN 2025 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -720,46 +720,42 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \absvshift=\dimen340
 \absfshift=\dimen341
 \absfshift=\dimen342
-) [1
+)
+\openout2 = `tikz/zener_diode.aux'.
+
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.tex) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
-]
-\openout2 = `tikz/zener_diode.aux'.
-
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/zener_diode.tex)
+{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 \openout2 = `tikz/example_3_29_given.aux'.
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_given.tex)
 \openout2 = `tikz/example_3_29_simpel.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.tex) [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}
-
-
-
-
-
-
-]
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_simpel.tex)
 \openout2 = `tikz/example_3_29_offset.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.tex) [3
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_3_29_offset.tex) [2
 
 
 
+
+
+
+
+
+
+] [3
 
 
 
 ]
 \openout2 = `tikz/example_2_29.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_2_29.tex) [4
-
-
-
-]
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_2_29.tex)
 \openout2 = `tikz/half_bridge_rectifier.aux'.
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/half_bridge_rectifier.tex
@@ -769,7 +765,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/full_bridge_rectifier.tex
 \absvshift=\dimen344
-)
+) [4
+
+
+
+
+
+
+]
 \openout2 = `tikz/transistors.aux'.
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistors.tex
@@ -782,12 +785,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
-] [6
-
-
-
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 395--397
+Underfull \hbox (badness 10000) in paragraph at lines 392--394
 
  []
 
@@ -801,10 +800,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 395--397
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_Kirchhoff.tex
 \absvshift=\dimen348
 \absvshift=\dimen349
-) [7
-
-
-
+) [6
 
 
 
@@ -814,7 +810,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 395--397
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_4_55_ssm.tex)
 \openout2 = `tikz/example_5_47_BipolAMP.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_BipolAMP.tex) [8
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_BipolAMP.tex) [7
+
+
+
 
 
 
@@ -831,7 +830,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 395--397
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_res_par_curr.tex
 \absvshift=\dimen353
 \absvshift=\dimen354
-) [9
+) [8
 
 
 
@@ -843,7 +842,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 395--397
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/example_5_47_simple_ssm.tex
 \absvshift=\dimen355
-) [10
+) [9
 
 
 
@@ -851,7 +850,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 395--397
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 552--553
+Underfull \hbox (badness 10000) in paragraph at lines 549--550
 
  []
 
@@ -860,21 +859,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 552--553
 (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfets.tex
 \absvshift=\dimen356
 \absvshift=\dimen357
-) [11
+) [10
 
 
 
 ]
 \openout2 = `tikz/mosfet_common_source.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source.tex) [12]
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source.tex) [11]
 \openout2 = `tikz/mosfet_common_source_and_follower.aux'.
 
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_common_source_and_follower.tex
 \absvshift=\dimen358
 \absvshift=\dimen359
 \absvshift=\dimen360
-) [13
+) [12
 
 
 
@@ -891,7 +890,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 552--553
 )
 \openout2 = `tikz/amp_open_loop.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_open_loop.tex) [14
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_open_loop.tex) [13
 
 
 
@@ -901,7 +900,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 552--553
  (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/amp_closed_loop.tex)
 \openout2 = `tikz/mosfet_current_mirror.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_current_mirror.tex) [15
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/mosfet_current_mirror.tex) [14
 
 
 
@@ -911,7 +910,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 552--553
 ]
 \openout2 = `tikz/transistor_current_mirror.aux'.
 
- (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistor_current_mirror.tex) [16
+ (/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/tikz/transistor_current_mirror.tex) [15
 
 
 
@@ -925,18 +924,18 @@ L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 55610 strings out of 474116
- 1568936 string characters out of 5743682
- 2217596 words of memory out of 5000000
- 77288 multiletter control sequences out of 15000+600000
+ 55584 strings out of 474116
+ 1568405 string characters out of 5743682
+ 2216987 words of memory out of 5000000
+ 77262 multiletter control sequences out of 15000+600000
  569421 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,15n,107p,791b,2174s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,15n,107p,791b,2191s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.pdf" (16 pages, 320430 bytes).
+Output written on "/Users/oompje_joost/Documents/ETH/HS ZSF Joël de Kanter HS24/main.pdf" (15 pages, 318402 bytes).
 PDF statistics:
- 161 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 157 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
