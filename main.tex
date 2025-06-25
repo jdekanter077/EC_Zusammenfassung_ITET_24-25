@@ -73,16 +73,16 @@ C_{j0} &= \sqrt{\frac{\epsilon_{si} q}{2} \cdot \frac{N_A N_D}{N_A + N_D} \cdot 
 \begin{equation}
     I_D = 
     \begin{cases}
-        {I} & {V_D > 0} \\
-        {0} & {V_D \leq 0}
+        {I} & {V > V_D} \\
+        {0} & {V \leq V_D}
     \end{cases}      
 \end{equation}
 
 \begin{equation}
     R_D = 
     \begin{cases}
-        {0} & {V_D > 0} \\
-        {\infty} & {V_D \leq 0}
+        {0} & {V > V_D} \\
+        {\infty} & {V \leq V_D}
     \end{cases}      
 \end{equation}
 
@@ -379,7 +379,7 @@ The early voltage is $V_A$. This is a kind of scaling factor for the $V_{CE}$ in
 We take the derivative of $I_C$ in respect to $V_{CE}$ to approximate a linear dependence, which we model as a resistor $r_o$.
 \begin{equation}
 %resizebox has been deactivated \resizebox{1\hsize}{!}{$
-    g_o \quad \hat{=} \quad \text{[conductance]} = \frac{dI_C}{dV_{CE}} = \frac{dI_C}{dV_{CE}} \left( \frac{V_{CE} \cdot I_C}{V_A} + I_C \right) = \frac{I_C}{V_A}
+    g_o \quad \hat{=} \quad \text{[conductance]} = \frac{dI_C}{dV_{CE}} = \frac{d}{dV_{CE}} \left( \frac{V_{CE} \cdot I_C}{V_A} + I_C \right) = \frac{I_C}{V_A}
 %resizebox has been deactivated    $}
 \end{equation}
 
@@ -401,7 +401,7 @@ Construct the small-signal equivalent circuit.
 
 $V_A = \infty \to$ that means we can neglect the early effect.
 \\
-You may be tempted to draw a voltage arrow for the $Q_2$ transostor from collector to base, but this is actually wrong. $Q_2$ is a NPN transistor. That means that the collector is made out of N-type material, and the base is made out of P-type material. So the PN-junction actually goes from base to collector and if we want to forward bias it by $\max 0.2 V$, then the \textbf{base is at a higher potential than the collector}. 
+You may be tempted to draw a voltage arrow for the $Q_2$ transistor from collector to base, but this is actually wrong. $Q_2$ is a NPN transistor. That means that the collector is made out of N-type material, and the base is made out of P-type material. So the PN-junction actually goes from base to collector and if we want to forward bias it by $\max 0.2 V$, then the \textbf{base is at a higher potential than the collector}. 
 
 \begin{figure}[H]{} 
     \centering
@@ -621,8 +621,8 @@ The MOSFET device is off, no current flows.
 \subsection{triode/linear/ohmic region}
 
 $V_{DS} < (V_{GS} - V_{th})$
-\\
-Deep saturation region: $V_{DS} \ll 2(V_{GS} - V_{th})$
+% \\
+% Deep saturation region: $V_{DS} \ll 2(V_{GS} - V_{th})$ Turns out deep saturation doesnt exist for MOSFETS!
 \begin{equation}
     I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} \cdot (2(V_{GS} - V_{th})V_{DS} - {V_{DS}^2})
 \end{equation}
